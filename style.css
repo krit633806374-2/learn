@@ -63,4 +63,14 @@ body {
         text-shadow: 2px 2px 8px rgba(0,0,0,0.3);
         margin-top: 20px;
         animation: fadeIn 2s ease-in-out forwards;
-    }  
+    }
+    #encourageBtn {
+        background: linear-gradient(45deg, #ff758c, #ff7eb3);
+        color: white;
+      }
+      
+      #bgBtn {
+        background: linear-gradient(45deg, #43cea2, #185a9d);
+        color: white;
+      }
+      

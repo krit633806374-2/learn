@@ -7,16 +7,20 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <h1 id="question">กินข้าวกันเถอะจ้ะ v7</h1>
+  <h1 id="question">กินข้าวกันเถอะจ้ะv13</h1>
   <div id="btnContainer">
     <button class="btn" id="yesBtn">พีพีน่ารัก</button>
     <button class="btn" id="noBtn">พีพีไม่น่ารัก</button>
+    <button class="btn" id="encourageBtn">ให้กำลังใจ 💖</button>
+    <button class="btn" id="bgBtn">เปลี่ยนพื้นหลัง 🎨</button>
   </div>
   <button class="btn" id="restartBtn">เล่นอีกครั้ง 🔄</button>
 
   <script>
     const yesBtn = document.getElementById("yesBtn");
     const noBtn = document.getElementById("noBtn");
+    const encourageBtn = document.getElementById("encourageBtn");
+    const bgBtn = document.getElementById("bgBtn");
     const question = document.getElementById("question");
     const restartBtn = document.getElementById("restartBtn");
     const btnContainer = document.getElementById("btnContainer");
@@ -24,8 +28,8 @@
     // เมื่อกด "พีพีน่ารัก"
     yesBtn.addEventListener("click", () => {
       question.textContent = "ขอบคุณนะมุอ้วน ฮิฮิฮิ";
-      btnContainer.style.display = "none"; // ซ่อนปุ่มทั้งหมด
-      restartBtn.style.display = "inline-block"; // แสดงปุ่มเล่นใหม่
+      btnContainer.style.display = "none"; 
+      restartBtn.style.display = "inline-block"; 
     });
 
     // ปุ่ม "พีพีไม่น่ารัก" จะวิ่งหนีเมาส์
@@ -43,8 +47,34 @@
     // ปุ่มเล่นอีกครั้ง
     restartBtn.addEventListener("click", () => {
       question.textContent = "พีพีน่ารักมั้ยมุอ้วน 🥰";
-      btnContainer.style.display = "block"; // แสดงปุ่มกลับมา
-      restartBtn.style.display = "none"; // ซ่อนปุ่มเล่นใหม่
+      btnContainer.style.display = "block"; 
+      restartBtn.style.display = "none"; 
+    });
+
+    // ปุ่ม "ให้กำลังใจ"
+    encourageBtn.addEventListener("click", () => {
+      const messages = [
+        "มุอ้วนสู้ๆนะ 💪",
+        "วันนี้ก็ทำได้ดีมากเลย 🥰",
+        "พักบ้างน้าา เดี๋ยวไม่สบาย ❤️",
+        "พีพีเก่งที่สุดแล้ว ✨",
+        "ยิ้มหน่อยสิ น่ารักจัง 😍"
+      ];
+      const randomMsg = messages[Math.floor(Math.random() * messages.length)];
+      question.textContent = randomMsg;
+    });
+
+    // ปุ่ม "เปลี่ยนพื้นหลัง"
+    bgBtn.addEventListener("click", () => {
+      const colors = [
+        "linear-gradient(135deg, #ff9a9e, #fad0c4)",
+        "linear-gradient(135deg, #a1c4fd, #c2e9fb)",
+        "linear-gradient(135deg, #fbc2eb, #a6c1ee)",
+        "linear-gradient(135deg, #fddb92, #d1fdff)",
+        "linear-gradient(135deg, #84fab0, #8fd3f4)"
+      ];
+      const randomBg = colors[Math.floor(Math.random() * colors.length)];
+      document.body.style.background = randomBg;
     });
   </script>
 </body>
