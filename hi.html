@@ -3,66 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <title>ฉันน่ารักไหม</title>
-  <style>
-    body {
-      margin: 0;
-      padding: 0;
-      height: 100vh;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      flex-direction: column;
-      background: linear-gradient(135deg, #ff9a9e, #fad0c4, #fad0c4);
-      overflow: hidden;
-    }
-
-    h1 {
-      font-size: 3rem;
-      color: #fff;
-      text-shadow: 2px 2px 8px rgba(0,0,0,0.3);
-      margin-bottom: 50px;
-      animation: float 3s ease-in-out infinite;
-    }
-
-    @keyframes float {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-15px); }
-    }
-
-    .btn {
-      padding: 15px 30px;
-      margin: 10px;
-      border: none;
-      border-radius: 50px;
-      font-size: 1.3rem;
-      font-weight: bold;
-      cursor: pointer;
-      transition: all 0.3s ease;
-      box-shadow: 0 8px 15px rgba(0,0,0,0.2);
-    }
-
-    .btn:hover {
-      transform: scale(1.1);
-      box-shadow: 0 12px 20px rgba(0,0,0,0.3);
-    }
-
-    #yesBtn {
-      background: linear-gradient(45deg, #ff6ec4, #7873f5);
-      color: #fff;
-    }
-
-    #noBtn {
-      background: linear-gradient(45deg, #ff4e50, #f9d423);
-      color: #fff;
-      position: absolute;
-    }
-
-    #restartBtn {
-      display: none;
-      background: linear-gradient(45deg, #42e695, #3bb2b8);
-      color: white;
-    }
-  </style>
+  <!-- เชื่อมต่อไฟล์ CSS -->
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <h1 id="question">กินข้าวกันเถอะจ้ะ v7</h1>
@@ -79,14 +21,14 @@
     const restartBtn = document.getElementById("restartBtn");
     const btnContainer = document.getElementById("btnContainer");
 
-    // เมื่อกด "ฉันน่ารัก"
+    // เมื่อกด "พีพีน่ารัก"
     yesBtn.addEventListener("click", () => {
       question.textContent = "ขอบคุณนะมุอ้วน ฮิฮิฮิ";
       btnContainer.style.display = "none"; // ซ่อนปุ่มทั้งหมด
       restartBtn.style.display = "inline-block"; // แสดงปุ่มเล่นใหม่
     });
 
-    // ปุ่มไม่น่ารักจะวิ่งหนีเมาส์
+    // ปุ่ม "พีพีไม่น่ารัก" จะวิ่งหนีเมาส์
     noBtn.addEventListener("mouseover", () => {
       const bodyWidth = window.innerWidth;
       const bodyHeight = window.innerHeight;
