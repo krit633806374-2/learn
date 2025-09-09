@@ -1,11 +1,162 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="th">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+  <meta charset="UTF-8">
+  <title>ฉันน่ารักไหม</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      background: linear-gradient(135deg, #ff9a9e, #fad0c4, #fad0c4);
+      overflow: hidden;
+      font-family: "Prompt", sans-serif;
+    }
+
+    h1 {
+      font-size: 3rem;
+      color: #fff;
+      text-shadow: 2px 2px 8px rgba(0,0,0,0.3);
+      margin-bottom: 50px;
+      animation: float 3s ease-in-out infinite;
+      text-align: center;
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-15px); }
+    }
+
+    #btnContainer {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 20px;
+      position: relative;
+    }
+
+    .btn {
+      padding: 15px 30px;
+      border: none;
+      border-radius: 50px;
+      font-size: 1.3rem;
+      font-weight: bold;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      box-shadow: 0 8px 15px rgba(0,0,0,0.2);
+    }
+
+    .btn:hover {
+      transform: scale(1.1);
+      box-shadow: 0 12px 20px rgba(0,0,0,0.3);
+    }
+
+    #yesBtn {
+      background: linear-gradient(45deg, #ff6ec4, #7873f5);
+      color: #fff;
+    }
+
+    #noBtn {
+      background: linear-gradient(45deg, #ff4e50, #f9d423);
+      color: #fff;
+      position: relative; /* ปกติอยู่ตรงกลาง */
+    }
+
+    #restartBtn, #backBtn {
+      display: none;
+      background: linear-gradient(45deg, #42e695, #3bb2b8);
+      color: white;
+      margin-top: 20px;
+    }
+
+    #retryYesBtn {
+      display: none;
+      background: linear-gradient(45deg, #ff6ec4, #7873f5);
+      color: #fff;
+      margin-top: 20px;
+    }
+  </style>
 </head>
 <body>
-    <p>hello tad yehe </p>
+  <h1 id="question">พีพีน่ารักมั้ยมุอ้วน 🥰</h1>
+  <div id="btnContainer">
+    <button class="btn" id="yesBtn">พีพีน่ารัก</button>
+    <button class="btn" id="noBtn">พีพีไม่น่ารัก</button>
+  </div>
+  <button class="btn" id="restartBtn">เล่นอีกครั้ง 🔄</button>
+  <button class="btn" id="backBtn">ย้อนกลับ ⬅️</button>
+  <button class="btn" id="retryYesBtn">พีพีน่ารัก 💖</button>
+
+  <script>
+    const yesBtn = document.getElementById("yesBtn");
+    const noBtn = document.getElementById("noBtn");
+    const question = document.getElementById("question");
+    const restartBtn = document.getElementById("restartBtn");
+    const btnContainer = document.getElementById("btnContainer");
+    const backBtn = document.getElementById("backBtn");
+    const retryYesBtn = document.getElementById("retryYesBtn");
+
+    // เมื่อกด "พีพีน่ารัก"
+    yesBtn.addEventListener("click", () => {
+      question.textContent = "ขอบคุณนะมุอ้วน ฮิฮิฮิ";
+      btnContainer.style.display = "none"; 
+      restartBtn.style.display = "inline-block"; 
+      backBtn.style.display = "none"; 
+      retryYesBtn.style.display = "none";
+    });
+
+    // ปุ่มไม่น่ารักจะหนีไวขึ้น
+    noBtn.addEventListener("mousemove", () => {
+      noBtn.style.position = "absolute";
+      const bodyWidth = window.innerWidth;
+      const bodyHeight = window.innerHeight;
+      const newX = Math.random() * (bodyWidth - noBtn.offsetWidth - 50);
+      const newY = Math.random() * (bodyHeight - noBtn.offsetHeight - 50);
+      noBtn.style.left = newX + "px";
+      noBtn.style.top = newY + "px";
+    });
+
+    // ถ้าเผลอกด "ไม่น่ารัก"
+    noBtn.addEventListener("click", () => {
+      question.textContent = "คำตอบนี้ดูไม่ค่อยถูกต้องเท่าไหร่ 😅";
+      btnContainer.style.display = "none";
+      restartBtn.style.display = "none";
+      backBtn.style.display = "inline-block";
+      retryYesBtn.style.display = "inline-block";
+    });
+
+    // ปุ่มเล่นอีกครั้ง
+    restartBtn.addEventListener("click", () => {
+      resetGame();
+    });
+
+    // ปุ่มย้อนกลับ
+    backBtn.addEventListener("click", () => {
+      resetGame();
+    });
+
+    // ปุ่ม retryYesBtn (ย้ำว่าพีพีน่ารัก)
+    retryYesBtn.addEventListener("click", () => {
+      question.textContent = "ขอบคุณนะมุอ้วน ฮิฮิฮิ";
+      backBtn.style.display = "none";
+      retryYesBtn.style.display = "none";
+      restartBtn.style.display = "inline-block";
+    });
+
+    function resetGame() {
+      question.textContent = "พีพีน่ารักมั้ยมุอ้วน 🥰";
+      btnContainer.style.display = "flex";
+      restartBtn.style.display = "none";
+      backBtn.style.display = "none";
+      retryYesBtn.style.display = "none";
+      noBtn.style.position = "relative";
+      noBtn.style.left = "0";
+      noBtn.style.top = "0";
+    }
+  </script>
 </body>
 </html>
